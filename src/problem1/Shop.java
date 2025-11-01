@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Shop
 {
+
+
     public static void main (String[] args)
     {
         ArrayList<Item> cart = new ArrayList();
@@ -22,7 +24,19 @@ public class Shop
             System.out.print ("Enter the quantity: ");
             quantity = scan.nextInt();
 // *** create a new item and add it to the cart
+            Item item1= new Item(itemName,itemPrice,quantity);
+            cart.add(item1);
+
             // *** print the contents of the cart object using println
+           // System.out.println(cart); //this is the default printing of the array
+            //The method of the loop for accurate printing
+            double totalPrice = 0;
+            for (Item it: cart){
+                System.out.println(it);
+                totalPrice += it.getPrice()*it.getQuantity();
+            }
+            System.out.println("Total price:" + totalPrice + "£");
+            scan.nextLine();
             System.out.print ("Continue shopping (y/n)? ");
             keepShopping = scan.nextLine();
         }
